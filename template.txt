@@ -1,0 +1,16 @@
+LINK
+nsegs nsyms nrels
+-- segments --
+(name)   (logical start address)    (length in bytes)    (code letters)
+.text             1000                     2500                RP
+.data             4000                     C00                 RWP
+.bss              5000                     1900                RW
+
+R - readable
+W - writable
+P - present
+
+-- symbols --
+name value seg type
+-- rels --
+-- data --

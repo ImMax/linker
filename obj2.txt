@@ -1,0 +1,11 @@
+LINK
+3 1 2
+- segments -
+.text 2000 10 RP
+.data 4000 10 RWP
+.bss 6000 0 RW
+- symbols -
+obj2.txt 0 0 *ABS*
+A 10 2 D
+- rels -
+- data -
