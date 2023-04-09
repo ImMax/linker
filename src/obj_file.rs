@@ -62,7 +62,7 @@ impl Display for ObjectFile {
 
         for (_, sym) in &self.symbols {
             symbs.push_str(&format!("  {}\n", sym));
-            if (sym.sym_type == "*ABS*") {
+            if sym.sym_type == "*ABS*" {
                 mod_name = sym.name.clone();
             }
         }

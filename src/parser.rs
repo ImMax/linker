@@ -1,9 +1,7 @@
 use std::fs::File;
-use std::error::Error;
 use std::io::prelude::*;
 use std::path::Path;
 use std::collections::HashMap;
-use super::obj_file::*;
 use super::segment::*;
 use super::symbol::*;
 
@@ -12,22 +10,22 @@ pub const SYMBOLS: &'static str = "- symbols -";
 pub const RELS: &'static str = "- rels -";
 pub const DATA: &'static str = "- data -";
 
-const MAGIC_LINE: usize = 0;
-const ENTRIES_LINE: usize = 1;
-
-const NSEGS_ENTRY: usize = 0;
-const NSYMS_ENTRY: usize = 1;
-const NRELS_ENTRY: usize = 2;
+// const MAGIC_LINE: usize = 0;
+// const ENTRIES_LINE: usize = 1;
+//
+// const NSEGS_ENTRY: usize = 0;
+// const NSYMS_ENTRY: usize = 1;
+// const NRELS_ENTRY: usize = 2;
 
 pub fn parse_obj_file(p : &str) -> HashMap<&str, Vec<String>> {
     let path = Path::new(p);
     let mut file = match File::open(&path) {
-        Err(why) => panic!("can't open file {}", why.description()),
+        Err(why) => panic!("can't open file {}", why.to_string()),
         Ok(file) => file
     };
     let mut content = String::new();
     let file_string = match file.read_to_string(&mut content) {
-        Err(why) => panic!("couldn't read {}", why.description()),
+        Err(why) => panic!("couldn't read {}", why.to_string()),
         Ok(_) => content,
     };
     let lines = file_string.lines().collect::<Vec<&str>>().clone();
